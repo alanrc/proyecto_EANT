@@ -22,13 +22,19 @@ a {
 /*Estilos Particulares*/
 header {
     background-color: #333;
-    overflow: auto;
+    overflow: hidden;
     padding: 15px;
 }
 header h1 {
+	background-image: url("../img/logo.png");
+	background-repeat: no-repeat;
+	background-position: left center;
+	line-height: 1.5;
+	padding-left: 75px;
     color: #fff;
-    margin: 0;
-    float: left;
+	float: left;
+	font-weight: 700;
+	font-size: 28px;
 }
 header nav {
     float: right;
