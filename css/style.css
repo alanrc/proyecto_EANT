@@ -1,9 +1,3 @@
-/** {
-    margin: 0;
-    padding: 0;
-}*/
-
-
 /*Estilos Generales*/
 * {
     outline: dotted 1px red;
@@ -56,4 +50,8 @@ header nav a {
 header nav a:hover {
     color: #333;
     background-color: #fff;
+}
+
+#noticias-destacadas img {
+	width: 100%;
 }
