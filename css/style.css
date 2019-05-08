@@ -1,7 +1,7 @@
 /*Estilos Generales*/
-* {
+/* * {
     outline: dotted 1px red;
-}
+} */
 body {
     font-family: Helvetica, Arial, Open Sans, sans-serif;
     font-size: 14px;
@@ -51,7 +51,67 @@ header nav a:hover {
     color: #333;
     background-color: #fff;
 }
-
 #noticias-destacadas img {
 	width: 100%;
+	display: block;
+}
+#noticias-destacadas figcaption {
+	background-color: #333;
+	padding: 15px;
+}
+#noticias-destacadas h2 {
+	color: #fff;
+	font-size: 36px;
+	font-weight: 700;
+}
+
+
+.noticia {
+	display: flex;
+	flex-direction: row; /* ------- row | column | row-reverse | column-reverse ---------   */
+	align-items: center;  /* ------- ---------   */
+	justify-content: space-around; /* ------- flex-start | center | flex-end | space-between | space-around   ---------   */ 
+	border-bottom: 1px solid #ccc;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.noticia:last-child {
+	border-bottom: none;
+}
+.noticia-img {
+	width: 25%;
+}
+.noticia-img img {
+	width: 100%;
+}
+.noticia-txt {
+	width: 65%;
+}
+.noticia-txt h3 {
+	font-weight: 700;
+	font-size: 28px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.noticia-txt p {
+	font-size: 20px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.noticia-txt a {
+	color: #000;
+}
+.noticia-txt a:hover {
+	color: #333;
+}
+
+footer {
+	background-color: #333;
+	padding: 15px;
+}
+footer p {
+	color: #fff;
+	font-size: 12px;
+	text-align: center;
 }
