@@ -115,3 +115,39 @@ footer p {
 	font-size: 12px;
 	text-align: center;
 }
+
+#tabla-posiciones {
+	padding: 15px 0;
+}
+#tabla-posiciones table {
+	margin: auto;
+	width: 45%;
+}
+#tabla-posiciones th {
+	background-color: #e74c3c;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 700;
+	padding: 10px;
+}
+#tabla-posiciones td {
+	padding: 10px;
+	vertical-align: middle;
+}
+#tabla-posiciones td:nth-of-type(odd) {    /* even => par, odd =>impar */
+	font-size: 24px;
+	font-weight: 700;
+	text-align: center;	
+}
+#tabla-posiciones tr {
+	background-color: #eee;
+	border-bottom: 1px solid #ccc;
+}
+#tabla-posiciones tr:last-child {
+	border: none;
+}
+
+#tabla-posiciones td:nth-of-type(even) span {
+	color: #006a83;
+	font-weight: 700;
+}
