@@ -151,3 +151,41 @@ footer p {
 	color: #006a83;
 	font-weight: 700;
 }
+
+#menu-mobile {
+	display: none;
+}
+/* mobile - desing */
+
+
+@media screen and (max-width: 576px) {
+	body {
+		color: #23cba7;
+	}
+	#menu {
+		display: none;
+		float: none;
+		clear: both;
+	}
+	#menu li {
+		display: block;
+		text-align: center;
+	}
+	#menu li a {
+		display: block;
+	}
+	#menu-mobile {
+		display: block;
+		float: right;
+		background-color: transparent;
+		border: none;
+		color: #fff;
+		font-size: 24px;
+		line-height: 1;
+		font-weight: 700;
+		padding: 8px;
+	}
+	#menu-mobile:focus + #menu {
+		display: block;
+	}
+}
