@@ -5,37 +5,173 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>JavaScript</title>
+	<link rel="stylesheet" href="https://docs.google.com/uc?id=17C6A6tYbFc9esDbgo0Q-HjN2rNjvXbyc">
 </head>
 <body>
-	<h1>Kiosko " El JeviScript"</h1>
+	
+	<h1>Kiosko <strong>El JeviScript</strong></h1>
 
-	<button>Nuevo Prouducto</button>
+	<button>Nuevo Producto +</button>
 
-	<section id="productos">
-	</section>
-
+	<table>
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Stock</th>
+				<th>Precio</th>
+				<th>Disponible</th>
+			</tr>
+		</thead>
+		<tbody id="productos">
+			<!-- ACÁ TIENEN QUE APARECER LOS PRODUCTOS -->
+		</tbody>
+	</table>
 	<script>
 		document.querySelector("button").onclick = cargarProducto
 
 		function cargarProducto() {
 			// Introduccion
-			let nombre = prompt("ingrese su nombre")
-			let entero = prompt("ingrese stock: ")
+			let nombre = prompt("ingrese su nombre: ")
+			let stock = prompt("ingrese stock: ")
 			let precio = prompt("ingrese precio: ")
 			let disponible = confirm("esta disponible: ")
 				
 			// Nudo
-			if (nombre == "") {
+			while (nombre == "" || nombre == null || nombre == undefined) {
 				alert("ERROR: El nombre no puede quedar vacio....")
+				nombre = prompt("ingrese su nombre: ")
+				
+			}
+			if (stock == "" || stock < 0) {
+				alert("ERROR: El stock debe ser un número positivo..")
 				return
+			}
+			if (precio == "" || precio < 0 || parseFloat(precio) == NaN) {
+				alert("ERROR: El stock debe ser un número positivo con decimales")
+				return
+			}
+			if (disponible == undefined) {
+				alert("ERROR: Debe especificar la disponibilidad")
 			}
 
 			let precioFinal = precio * 1.21
-			// Desenlace
-			let msg = `<p> el pruducto ${nombre} vale ARS  ${precioFinal} la unidad</p>`
 
-			document.getElementById("productos").insertAdjacentHTML("afterend", msg)
-			//console.log(`el pruducto ${nombre} vale ARS  ${precioFinal} la unidad`)
+			// Desenlace
+			// let msg = `<p> el pruducto ${nombre} vale ARS  ${precioFinal} la unidad</p>`
+			
+			// document.querySelector("#productos").insertAdjacentHTML("afterend", msg)
+			// document.getElementById("productos").insertAdjacentHTML("beforeend", msg)
+
+			let fila = document.createElement("tr")
+
+			let celda1 = document.createElement("td")
+			let celda2 = document.createElement("td")
+			let celda3 = document.createElement("td")
+			let celda4 = document.createElement("td")
+
+			celda1.innerText = nombre
+			celda2.innerText = stock + "unid."
+			celda3.innerText = `$${precioFinal.toFixed(2)}`
+			celda4.innerText = disponible
+
+
+
+			fila.appendChild(celda1)
+			fila.appendChild(celda1)
+
+			document.querySelector("#productos").appendChild(fila)
+
+			/*
+			
+			let msg = `<tr> <td>${nombre}</td> <td>${stock} unid.</td> <td>$${precioFinal.toFixed(2)}</td> <td>${disponible}</td> </tr>`
+			let fila = document.createElement("tr")
+				fila.innerHTML = msg
+
+			document.querySelector("#productos").appendChild(fila)
+			*/
+
+
+
+
+			
+		}
+	</script>
+	<script>
+		document.querySelector("button").onclick = cargarProducto
+
+		function cargarProducto() {
+			// Introduccion
+			let nombre = prompt("ingrese su nombre: ")
+			let stock = prompt("ingrese stock: ")
+			let precio = prompt("ingrese precio: ")
+			let disponible = confirm("esta disponible: ")
+				
+			// Nudo
+			while (nombre == "" || nombre == null || nombre == undefined) {
+				alert("ERROR: El nombre no puede quedar vacio....")
+				nombre = prompt("ingrese su nombre: ")
+				
+			}
+			if (stock == "" || stock < 0) {
+				alert("ERROR: El stock debe ser un número positivo..")
+				return
+			}
+			if (precio == "" || precio < 0 || parseFloat(precio) == NaN) {
+				alert("ERROR: El stock debe ser un número positivo con decimales")
+				return
+			}
+			if (disponible == undefined) {
+				alert("ERROR: Debe especificar la disponibilidad")
+			}
+
+			let precioFinal = precio * 1.21
+
+			// Desenlace
+			// let msg = `<p> el pruducto ${nombre} vale ARS  ${precioFinal} la unidad</p>`
+			
+			// document.querySelector("#productos").insertAdjacentHTML("afterend", msg)
+			// document.getElementById("productos").insertAdjacentHTML("beforeend", msg)
+
+			let fila = document.createElement("tr")
+
+			let celda1 = document.createElement("td")
+			let celda2 = document.createElement("td")
+			let celda3 = document.createElement("td")
+			let celda4 = document.createElement("td")
+
+			celda1.innerText = nombre
+			celda2.innerText = stock + " unid."
+			celda3.innerText = `$ ${precioFinal.toFixed(2)}`
+			celda4.innerText = disponible
+
+			
+			/*  ----------   OPERADOR TERNARIO    --------------  */
+			// VARALE = ( CONDICION ) ? VALOR VERDADERO : VALOR FALSO
+			celda4.innerText =(disponible == true) ? "SI" : "NO"
+			/*   ----------------------------------------------    */
+
+
+
+			fila.appendChild(celda1)
+			fila.appendChild(celda2)
+			fila.appendChild(celda3)
+			fila.appendChild(celda4)
+
+			document.querySelector("#productos").appendChild(fila)
+
+			/*
+			
+			let msg = `<tr> <td>${nombre}</td> <td>${stock} unid.</td> <td>$${precioFinal.toFixed(2)}</td> <td>${disponible}</td> </tr>`
+			let fila = document.createElement("tr")
+				fila.innerHTML = msg
+
+			document.querySelector("#productos").appendChild(fila)
+			*/
+
+
+
+
+			
 		}
 	</script>
 </body>
