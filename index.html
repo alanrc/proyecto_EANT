@@ -132,5 +132,95 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	<script>
+		/*Manipulacion de elementos HTML*/
+		/*// 1) Manipulación de Contenido
+		document.querySelector(".navbar-brand").innerHTML = "DeporteXtremo <em>Plus</em>"
+		
+		// 2) Manipulación de Estructura
+		document.querySelector(".navbar-brand").style.color = "#1abc9c"
+		document.querySelector(".navbar-brand").style.fontSize = "23px"
+		document.querySelector(".navbar-brand").classList.add("bg-light")
+		// document.querySelector(".navbar-brand").classList.remove("bg-light")
+		document.querySelector(".navbar-brand").title = "Esto lo puso JS"
+		
+		// 3) Manipulación de Comportamiento (Eventos)
+		document.querySelector(".navbar-brand").onclick = cambiarLogo */
+
+
+
+		
+		/* let logo = document.querySelector(".navbar-brand:nth-of-type(2)") // ubicar a la 2da clase */
+		/* let logo = document.querySelector(".navbar-brand")
+		logo.onclick = cambiarLogo
+
+		function cambiarLogo() {
+			// Inicio cabiarLogo
+			logo.innerHTML = "DeporteXtremo <em>Plus</em>"
+			logo.style.color = "#1abc9c"
+			logo.style.fontSize = "23px"
+			logo.classList.add("bg-light")
+			logo.title = "Esto lo puso JS"
+			// Fin cambiarLogo	
+		} */
+		
+
+		let links = document.querySelectorAll(".nav-link")
+
+		/* //  ------   ASI NO       -----
+		links [0].onclick = validarOpcion()
+		links [1].onclick = validarOpcion()
+		links [2].onclick = validarOpcion()
+		links [3].onclick = validarOpcion()
+		links [4].onclick = validarOpcion()
+		links [5].onclick = validarOpcion()
+		links [6].onclick = validarOpcion()   */ 
+
+		for (let i = 0; i < links.length; i++) {
+			links[i].onclick = validarOpcion
+		}
+
+		function validarOpcion(e) {
+			let clickeado = e.target;
+			let rta = confirm(`Esta seguro que desea ir a  ${clickeado.innerText} ?`)
+
+			if (rta) {
+				alert("Ok, buen viaje...")
+			}
+		}
+
+
+		
+	</script>
+
+
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
