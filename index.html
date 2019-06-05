@@ -20,25 +20,25 @@
 		<div class="collapse navbar-collapse" id="menu">
 			<ul class="navbar-nav ml-lg-auto text-center">
 				<li class="nav-item">
-					<a class="nav-link" href="#"><i class="far fa-futbol"></i> Futbol</a>
+					<a class="nav-link" href="https://es.wikipedia.org/wiki/F%C3%BAtbol"><i class="far fa-futbol"></i> Futbol</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#"> <i class="fas fa-basketball-ball"></i> NBA</a>
+					<a class="nav-link" href="nba.html"> <i class="fas fa-basketball-ball"></i> NBA</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#"><i class="fas fa-table-tennis"></i> Tenis</a>
+					<a class="nav-link" href="tenis.html"><i class="fas fa-table-tennis"></i> Tenis</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#"><i class="fas fa-car-alt"></i> Formula 1</a>
+					<a class="nav-link" href="formula1.html"><i class="fas fa-car-alt"></i> Formula 1</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#"><i class="fas fa-boxes"></i> Boxeó</a>
+					<a class="nav-link" href="boxeo.html"><i class="fas fa-boxes"></i> Boxeó</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#"><i class="fas fa-medal"></i> JJOO</a>
+					<a class="nav-link" href="joo.html"><i class="fas fa-medal"></i> JJOO</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#"><i class="fas fa-motorcycle"></i> Moto GP</a>
+					<a class="nav-link" href="moto.html"><i class="fas fa-motorcycle"></i> Moto GP</a>
 				</li>
 			</ul>
 		</div>
@@ -177,25 +177,38 @@
 		links [5].onclick = validarOpcion()
 		links [6].onclick = validarOpcion()   */ 
 
+		// for (CONTADOR; CONDICION; SECUENCIA)
 		for (let i = 0; i < links.length; i++) {
 			links[i].onclick = validarOpcion
 		}
 
-		function validarOpcion(e) {
-			let clickeado = e.target;
+		function validarOpcion(event) {
+			event.preventDefault()
+			let clickeado = event.target;
+			console.log(event)
 			let rta = confirm(`Esta seguro que desea ir a  ${clickeado.innerText} ?`)
 
 			if (rta) {
 				alert("Ok, buen viaje...")
+				window.location = clickeado.href
+				// {clickeado.target="_blank"}
 			}
+		}
+		
+		function obtenerNoticias() {
+			let ajax = new XMLHttpRequest()
+			ajax.open("GET", "noticias.json")
+			ajax.onload = function () {
+				if (ajax.status == 200) { // <-- Respuesta exitosa
+					console.log(ajax.response)
+				}
+			}
+			ajax.send()
 		}
 
 
-		
+
 	</script>
-
-
-
 </body>
 </html>
 
