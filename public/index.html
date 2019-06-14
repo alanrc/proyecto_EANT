@@ -82,12 +82,12 @@
 
 	<main class="container-fluid">
 		<!--  Inicio  de Noticias  -->
-		<article class="row py-2 mx-2 border-bottom">
+		<article class="row py-2 mx-2 border-bottom d-none noticia">
 			<div class="col-12 col-md-4">
 				<img src="{{IMAGEN}}" alt="" class="img-fluid">
 			</div>
 			<div class="col-12 col-md-8">
-				<h3>{{titulo}}</h3>
+				<h3></h3>
 				<p>por <strong>{{AUTOR}}</strong></p>
 				<p>{{DETALLE}}</p>
 			</div>
@@ -168,15 +168,48 @@
 		}
 		
 		function obtenerNoticias() {
+			// debugger // <---  Esto es magico
 			let ajax = new XMLHttpRequest()
-			ajax.open("GET", "noticias.json")
+			ajax.open("GET", " https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.clarin.com%2Frss%2Fdeportes%2Ffutbol%2F")
 			ajax.onload = function () {
 				if (ajax.status == 200) { // <-- Respuesta exitosa
+					/*
 					console.log('antes del parseo')
 					console.log(ajax.response)
 
 					console.log('despues del parseo')
 					console.log( JSON.parse(ajax.response) )
+					*/
+					
+					let noticias = JSON.parse(ajax.response)
+					// console.table(noticias)
+
+					// noticias.forEach(function (noticia) { //<---  para noticia.js  -->local
+					noticias.items.forEach(function (noticia) {
+						/*
+						console.log(`El titulo es:  ${noticia.titulo}`)
+						console.log(`El autor es: ${noticia.autor}`)
+						console.log(' ') */
+						let article = document.querySelector(".noticia").cloneNode(true)
+						
+						/* // para consumir api del local
+						article.querySelector('h3').innerText = noticia.titulo
+						article.querySelector('strong').innerText = noticia.autor
+						article.querySelector('p:nth-of-type(2)').innerText = noticia.detalle
+						article.querySelector('img').src = noticia.imagen */
+
+						//  para consumir api de terceros   --> url
+
+						article.querySelector('h3').innerText = noticia.title
+						article.querySelector('strong').innerText = noticia.autor
+						article.querySelector('p:nth-of-type(2)').innerText = noticia.description
+						article.querySelector('img').src = noticia.enclosure.link
+
+						article.classList.remove('d-none')
+
+						//console.log(article)
+						document.querySelector('main').appendChild(article)
+					})
 				}
 			}
 			ajax.send()
